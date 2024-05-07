@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+      font-family: 'myfont';
+      font-weight: 400;
+      src: url('./assets/fonts/richard-clean-font/RichardCleanPersonalUseRegular-MV54p.ttf') format('truetype');
+    }
+  }
