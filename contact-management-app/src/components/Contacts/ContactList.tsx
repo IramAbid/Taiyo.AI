@@ -38,41 +38,41 @@ const ContactList: React.FC<ContactListProps> = ({ contacts, onContactDeleted, o
   return (
     <div>
       {contacts.map((contact) => (
-        <div key={contact.id} className="border p-4 mb-4 w-auto flex items-center justify-between rounded-lg shadow-lg bg-white">
-          <div >
+        <div key={contact.id} className="flex flex-col sm:flex-row border p-4 mb-4 w-auto flex items-center justify-between rounded-lg shadow-lg bg-white">
+          <div className="flex flex-row">
             <p onClick={() => handleViewContact(contact.id)}>
               {selectedContactId === contact.id ? (
                 <>
-                  <span className='ml-5 pl-2 sm:pl-8 font-semibold text-custom-dark-gray2'>First Name : <span className='text-blue-500 ml-2'>{contact.firstName} <br/></span></span>
-                  <span className='ml-5 pl-2 sm:pl-8 font-semibold text-custom-dark-gray2'>Last Name : <span className='text-blue-500 ml-2'>{contact.lastName} <br/></span></span>
-                  <span className='ml-5 pl-2 sm:pl-8 font-semibold text-custom-dark-gray2'>Status <span className='ml-8'>:</span> <span className= {contact.status === 'Active' ? 'text-green-500 ml-2' : 'text-red-500 ml-2'} >{contact.status}</span></span>
+                  <span className='sm:ml-5  pl-0 sm:pl-8 font-semibold text-custom-dark-gray2'>First Name : <span className='text-blue-500 ml-2'>{contact.firstName} <br/></span></span>
+                  <span className='sm:ml-5  pl-0 sm:pl-8 font-semibold text-custom-dark-gray2'>Last Name : <span className='text-blue-500 ml-2'>{contact.lastName} <br/></span></span>
+                  <span className='sm:ml-5  pl-0 sm:pl-8 font-semibold text-custom-dark-gray2'>Status <span className='ml-8'>:</span> <span className= {contact.status === 'Active' ? 'text-green-500 ml-2' : 'text-red-500 ml-2'} >{contact.status}</span></span>
                 </>
               ) : (
                 <>
-                  <span className='ml-5 pl-2 sm:pl-8 font-semibold text-custom-dark-gray2'>{contact.firstName} {contact.lastName}</span>
+                  <span className='ml-0 sm:ml-5 pl-0 sm:pl-8 font-semibold text-custom-dark-gray2'>{contact.firstName} {contact.lastName}</span>
                 </>
               )}
             </p>
           </div>
-          <div>
+          <div className='flex flex-row'>
             {/* Edit Button */}
             <button
               onClick={() => onContactEdit(contact)} 
-              className="py-2 px-4 rounded-md mr-2"
+              className="py-2 px-1 sm:px-4 rounded-md mr-2"
             >
               <img src={userEdit} width={40} alt='edit-icon' title='Edit Contact'/> 
             </button>
             {/* View/Hide Button */}
             <button
               onClick={() => handleViewContact(contact.id)}
-              className=" py-2 px-4 rounded-md mr-2"
+              className="py-2 px-1 sm:px-4 rounded-md mr-2"
             >
               {selectedContactId === contact.id ? <img src={userHide} alt='hide-icon' title='Hide Details' width={40}/> : <img src={userView} alt='view-icon' title='View Details' width={40}/>}
             </button>
             {/* Delete Button */}
             <button
               onClick={() => handleDeleteContact(contact.id)}
-              className=" py-2 px-4 rounded-md mr-5"
+              className=" py-2 px-1 rounded-md mr-2"
             >
               <img src={userDelete} width={40} alt='delete-icon' title='Delete Contact'/>
             </button>
