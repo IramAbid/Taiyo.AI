@@ -3,14 +3,15 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import store from './redux/store';
+import store from './store/store';
 import ContactPage from './pages/ContactPage';
-import Contact from './pages/contact';
 import ChartMap from './pages/ChartMaps';
 import './App.css';
 import SideBar from './components/Sidebar/SideBar';
+const currentState = store.getState();
 
 const queryClient = new QueryClient();
+console.log('Current Redux Store State:', currentState);
 
 const App: React.FC = () => {
   return (
@@ -20,8 +21,8 @@ const App: React.FC = () => {
           <div className='bg-custom-color h-full'>
             <SideBar/>
             <Routes>
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/contact-page" element={<Contact />} />
+              <Route path="/contactPage" element={<ContactPage />} />
+              
               <Route path="/ChartMaps" element={<ChartMap />} />
               </Routes>
           </div>
