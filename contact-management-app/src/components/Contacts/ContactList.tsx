@@ -43,13 +43,13 @@ const ContactList: React.FC<ContactListProps> = ({ contacts, onContactDeleted, o
             <p onClick={() => handleViewContact(contact.id)}>
               {selectedContactId === contact.id ? (
                 <>
-                  <span className='ml-10 px-8 font-semibold text-custom-dark-gray2'>First Name : <span className='text-blue-500 ml-2'>{contact.firstName} <br/></span></span>
-                  <span className='ml-10 px-8 font-semibold text-custom-dark-gray2'>Last Name : <span className='text-blue-500 ml-2'>{contact.lastName} <br/></span></span>
-                  <span className='ml-10  px-8 font-semibold text-custom-dark-gray2'>Status <span className='ml-8'>:</span> <span className= {contact.status === 'Active' ? 'text-green-500 ml-2' : 'text-red-500 ml-2'} >{contact.status}</span></span>
+                  <span className='ml-10 pl-8 font-semibold text-custom-dark-gray2'>First Name : <span className='text-blue-500 ml-2'>{contact.firstName} <br/></span></span>
+                  <span className='ml-10 pl-8 font-semibold text-custom-dark-gray2'>Last Name : <span className='text-blue-500 ml-2'>{contact.lastName} <br/></span></span>
+                  <span className='ml-10  pl-8 font-semibold text-custom-dark-gray2'>Status <span className='ml-8'>:</span> <span className= {contact.status === 'Active' ? 'text-green-500 ml-2' : 'text-red-500 ml-2'} >{contact.status}</span></span>
                 </>
               ) : (
                 <>
-                  <span className='ml-10 px-8 font-semibold text-custom-dark-gray2'>{contact.firstName} {contact.lastName}</span>
+                  <span className='ml-10 pl-8 font-semibold text-custom-dark-gray2'>{contact.firstName} {contact.lastName}</span>
                 </>
               )}
             </p>
