@@ -23,7 +23,7 @@ const SideBar: React.FC = () => {
         </div>
         <nav className="flex-1">
           <ul className="space-y-4">
-            <Link to="/contact" className="block" onClick={closeMenu}>
+            <Link to="/contactPage" className="block" onClick={closeMenu}>
               <li className='flex flex-row items-center px-8 py-2 hover:bg-custom-color-hover'>
                 <img src={contactIcon} alt='contact-icon' className='w-10 mr-2' />
                 Contacts
