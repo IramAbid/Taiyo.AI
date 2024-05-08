@@ -5,36 +5,60 @@ import { Contact } from '../../store/types/type';
 import Card from '../Card/Card';
 import store from '../../store/store';
 
+/**
+ * AddContactForm component handles the form for adding a new contact.
+ * @param {object} props - The props of the component.
+ * @param {Function} props.onContactAdded - Function to call when a new contact is added.
+ * @param {Function} props.onCancel - Function to call when the form is canceled.
+ * 
+ */
+
 interface AddContactFormProps {
   onContactAdded: (newContact: Contact) => void;
   onCancel: () => void;
 }
 
 const AddContactForm: React.FC<AddContactFormProps> = ({ onContactAdded, onCancel }) => {
-  
+  // Dispatch function from Redux store
   const dispatch = useDispatch();
+
+  // State variables for form fields
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [status, setStatus] = useState<'Active' | 'Inactive'>('Active');
 
+  // Function to generate a unique ID for each contact
   const generateId = (): string => {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
   };
   
+  // Function to handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validation: Check if first name and last name are provided
     if (!firstName || !lastName) {
       alert('Please fill in all fields');
       return;
     }
 
+    // Generate unique ID for the new contact
     const id = generateId();
+
+    // Create a new contact object
     const contact: Contact = { id, firstName, lastName, status };
+
+    // Dispatch action to add the contact to Redux store
     dispatch(addContact(contact));
+
+    // Log current Redux store state
     const currentState = store.getState();
     console.log('Current Redux Store State:', currentState);
+
+    // Call the onContactAdded function with the new contact
     onContactAdded(contact);
+
+    // Clear form fields
     setFirstName('');
     setLastName('');
     setStatus('Active');
@@ -50,7 +74,8 @@ const AddContactForm: React.FC<AddContactFormProps> = ({ onContactAdded, onCance
         style={{ transform: 'translate(0%, 0%)' }}
       >
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-6">
-        <h1 className='font-semibold text-center'>ADD CONTACT FORM</h1>
+          <h1 className='font-semibold text-center'>ADD CONTACT FORM</h1>
+          {/* First Name Input */}
           <div className="flex flex-col space-y-1">
             <label htmlFor="firstName" className="text-black mx-4 ">First Name:</label>
             <input
@@ -62,6 +87,7 @@ const AddContactForm: React.FC<AddContactFormProps> = ({ onContactAdded, onCance
               className="border border-black mx-4 rounded-md p-2"
             />
           </div>
+          {/* Last Name Input */}
           <div className="flex flex-col space-y-1">
             <label htmlFor="lastName" className="text-black mx-4 ">Last Name:</label>
             <input
@@ -73,6 +99,7 @@ const AddContactForm: React.FC<AddContactFormProps> = ({ onContactAdded, onCance
               className="border border-black mx-4 rounded-md p-2"
             />
           </div>
+          {/* Status Radio Buttons */}
           <div className="flex items-center mt-6">
             <label htmlFor="active" className="text-black mx-4 ">Status:</label>
             <div>
@@ -98,6 +125,7 @@ const AddContactForm: React.FC<AddContactFormProps> = ({ onContactAdded, onCance
               <label htmlFor="Inactive" className="text-red-500">Inactive</label>
             </div>
           </div>
+          {/* Submit and Cancel Buttons */}
           <div className="flex justify-around mx-4 gap-5">
             <button 
               type="submit" 

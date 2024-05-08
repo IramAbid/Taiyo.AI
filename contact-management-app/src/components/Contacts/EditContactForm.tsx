@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { Contact } from '../../store/types/type';
 import Card from '../Card/Card';
+
+/**
+ * ContactEditForm component renders a form for editing contact details.
+ * @param {object} props - The props of the component.
+ * @param {Contact} props.contact - The contact object to be edited.
+ * @param {Function} props.onSave - Function to call when contact details are saved.
+ * @param {Function} props.onCancel - Function to call when editing is cancelled.
+ */
+
 interface ContactEditFormProps {
   contact: Contact;
   onSave: (editedContact: Contact) => void;
@@ -10,6 +19,7 @@ interface ContactEditFormProps {
 const ContactEditForm: React.FC<ContactEditFormProps> = ({ contact, onSave, onCancel }) => {
   const [editedContact, setEditedContact] = useState<Contact>({ ...contact });
 
+  // Function to handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEditedContact(prevState => ({
@@ -18,6 +28,7 @@ const ContactEditForm: React.FC<ContactEditFormProps> = ({ contact, onSave, onCa
     }));
   };
 
+  // Function to handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSave(editedContact);
@@ -76,18 +87,18 @@ const ContactEditForm: React.FC<ContactEditFormProps> = ({ contact, onSave, onCa
             <span className="text-red-500">Inactive</span>
           </div>
           <div className="flex justify-around mx-4 gap-5">
+            {/* Save Button */}
             <button 
               type="submit" 
               className="bg-custom-blue text-white py-2 mr-10 px-4 rounded-md hover:bg-custom-dark-gray transition duration-300 ease-in-out block"
-
             >
               Save Contact
             </button>
+            {/* Cancel Button */}
             <button 
               type="button" 
               onClick={onCancel} 
               className="bg-custom-blue text-white mr-2 py-2 px-4 rounded-md hover:bg-custom-dark-gray transition duration-300 ease-in-out block"
-
             >
               Cancel
             </button>

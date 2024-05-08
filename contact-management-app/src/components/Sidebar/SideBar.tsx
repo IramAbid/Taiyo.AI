@@ -4,31 +4,39 @@ import locationIcon from './location-mark.png';
 import contactIcon from './contacts.png';
 import '../../index.css';
 
+/**
+ * Sidebar component renders the navigation sidebar.
+ */
 const SideBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Toggle menu state
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // Close menu
   const closeMenu = () => {
     setIsOpen(false);
   };
 
   return (
     <>
+      {/* Sidebar */}
       <aside className={`fixed h-custom-height mt-3 ml-3 lg:w-64 bg-white text-black rounded-lg shadow-lg mb-8 transition-all duration-300 ${isOpen ? 'lg:block' : 'hidden lg:inline-block'}`} style={{ zIndex: 999 }}>
         <div className="p-4">
           <h2 className="text-4xl font-myfont font-bold text-center mt-8 mb-4 text-custom-black"><span className='text-custom-blue font-myfont'>Dash</span>Board</h2>
         </div>
         <nav className="flex-1">
           <ul className="space-y-4">
+            {/* Link to Contact Page */}
             <Link to="/contact-page" className="block" onClick={closeMenu}>
               <li className='flex flex-row items-center px-8 py-2 hover:bg-custom-light-blue'>
                 <img src={contactIcon} alt='contact-icon' className='w-10 mr-2' />
                 <h4 >Contacts</h4>
               </li>
             </Link>
+            {/* Link to Chart and Maps Page */}
             <Link to="/chart-maps" className="block" onClick={closeMenu}>
               <li className='flex flex-row items-center px-8 py-2 hover:bg-custom-light-blue'>
                 <img src={locationIcon} alt='Map-icon' className='w-10 mr-2'></img>

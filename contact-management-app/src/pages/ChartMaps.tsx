@@ -1,22 +1,26 @@
-// MainLayout.jsx
 import React from 'react';
 import Sidebar from '../components/Sidebar/SideBar';
 import Chart from '../components/CasesChart/CasesCharts';
 import Map from '../components/CasesMap/CasesMap';
 
-const Dashboard = () => {
+/**
+ * MainLayout component renders the main dashboard layout.
+ */
+const MainLayout = () => {
   return (
-    <div className=" bg-custom-color flex flex-col h-screen ">
+    <div className="bg-custom-color flex flex-col h-screen">
+      {/* Sidebar */}
       <Sidebar /> 
+      {/* Chart */}
       <div className="flex flex-col w-full bg-custom-color">
-     
         <Chart />
-        </div>
-        <div className="flex flex-col w-full bg-custom-color">
+      </div>
+      {/* Map */}
+      <div className="flex flex-col w-full bg-custom-color">
         <Map />
-        </div>
+      </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default MainLayout;

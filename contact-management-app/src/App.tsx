@@ -13,6 +13,9 @@ const currentState = store.getState();
 const queryClient = new QueryClient();
 console.log('Current Redux Store State:', currentState);
 
+/**
+ * App component renders the main application layout and routes.
+ */
 const App: React.FC = () => {
   return (
     <Provider store={store}>
@@ -21,6 +24,7 @@ const App: React.FC = () => {
           <div className='bg-custom-color h-full'>
             <SideBar/>
             <Routes>
+              {/* Set default route to contact page */}
               <Route path="/" element={<Navigate to="/contact-page" />} />
               <Route path="/contact-page" element={<ContactPage />} />
               <Route path="/chart-maps" element={<ChartMap />} />
