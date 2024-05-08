@@ -72,7 +72,7 @@ const ContactList: React.FC<ContactListProps> = ({ contacts, onContactDeleted, o
             {/* Delete Button */}
             <button
               onClick={() => handleDeleteContact(contact.id)}
-              className=" py-2 px-4 rounded-md mr-10"
+              className=" py-2 px-4 rounded-md mr-5"
             >
               <img src={userDelete} width={40} alt='delete-icon' title='Delete Contact'/>
             </button>
