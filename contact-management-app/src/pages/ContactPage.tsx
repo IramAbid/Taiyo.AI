@@ -3,6 +3,7 @@ import AddContactForm from '../components/Contacts/AddContactForm';
 import ContactList from '../components/Contacts/ContactList';
 import ContactEditForm from '../components/Contacts/EditContactForm'; // Import the edit form component
 import { Contact } from '../store/types/type';
+import Sidebar from '../components/Sidebar/SideBar';
 
 const ContactPage: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
@@ -46,40 +47,50 @@ const ContactPage: React.FC = () => {
     setEditContact(null);
   };
 
-  
   return (
-    <div className="bg-custom-color flex flex-col h-screen">
-      <h1 className='text-center mb-4 text-2xl'>Contact Page</h1>
-      {!showForm && contacts.length === 0 && (
-        <div className="text-center text-gray-600 mb-4">
-          <p>No contacts found. Please add contacts.</p>
-        </div>
-      )}
-      {showForm ? (
-        <AddContactForm onContactAdded={handleContactAdded} onCancel={handleCancelClick} />
-      ) : (
-        <button
-          onClick={handleCreateContactClick}
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out mb-4 mx-auto block"
-          style={{ width: 'fit-content' }}
-        >
-          Create Contact
-        </button>
-      )}
-      {contacts.length > 0 && (
-        <ContactList
-          contacts={contacts}
-          onContactDeleted={handleContactDeleted}
-          onContactEdit={handleContactEdit}
-        />
-      )}
-      {showEditForm && editContact && (
-        <ContactEditForm
-          contact={editContact}
-          onSave={handleSaveEditedContact}
-          onCancel={handleCancelEdit}
-        />
-      )}
+    <div className="bg-custom-color flex flex-col h-full min-h-screen">
+      <Sidebar />
+      <div className="w-full mt-4 mb-4 ml-auto sm:pl-20 pb:10 sm:pb-20 md:w-full md:px-2 sm:w-full md:w-full md:px lg:w-5/6 xl:w-5/6">
+        <h1 className="text-3xl sm:text-3xl font-semibold mb-2 mt-10 sm:mb-8 text-center text-custom-black">
+          CONTACT PAGE
+        </h1>
+        
+        {showForm ? (
+  <AddContactForm onContactAdded={handleContactAdded} onCancel={handleCancelClick} />
+) : (
+  <div className="flex flex-col sm:flex-row justify-center items-center h-full mb-9 sm:mt-0 mt-10 sm:mx-0 mx-8">
+  {!showForm && contacts.length === 0 && (
+    <div className="ml-0 sm:ml-20 text-center text-custom-dark-gray mb-4 sm:mb-0">
+      <p>
+        <span className="text-red-500 font-semibold">Error ! </span>No contacts found. Please add contacts using create contact button.
+      </p>
+    </div>
+  )}
+  <div className={` sm:ml-auto ${!showForm && contacts.length === 0 ? 'sm:mr-4' : ''}`}>
+  <button
+  onClick={handleCreateContactClick}
+  className={`flex mr-0 sm:mr-20 flex-row bg-custom-blue text-white py-2 px-4 rounded-md hover:bg-custom-dark-gray transition duration-300 ease-in-out block ${showForm || contacts.length > 0 ? 'place-self-start' : 'place-self-end sm:mr-10'}`}
+  style={{ width: 'fit-content' }}
+>
+  Create Contact
+</button>
+  </div>
+</div>
+
+)}
+
+
+        {contacts.length > 0 && (
+          <ContactList contacts={contacts} onContactDeleted={handleContactDeleted} onContactEdit={handleContactEdit} />
+        )}
+        {showEditForm && editContact && (
+          <ContactEditForm
+            contact={editContact}
+            onSave={handleSaveEditedContact}
+            onCancel={handleCancelEdit}
+          />
+        )}
+      </div>
     </div>
   );
 };

@@ -11,8 +11,21 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        'custom-color': '#fffbed', // Custom color value
-        'custom-color-hover':'#FFF6e3',
+        //Moon Phases theme
+        'custom-white':'#d3d9d4',
+        'custom-gray':'#748d92',
+        'custom-blue':'#124e66',
+        'custom-dark-gray':'#2e3944',
+        'custom-black2':'#212a31',
+
+        //blue-gray theme
+        'custom-off-white':'#f0ebdb',
+        'custom-light-blue':'#c5e2fb',
+        'custom-gray2':'#3e5c76',
+        'custom-dark-gray2':'#1d2d44',
+        'custom-black':'#od1321',
+        'custom-color': '#f0f8ff',
+
       },
       fontFamily: {
         'myfont': ['myfont', 'sans-serif'],

@@ -1,6 +1,5 @@
-// App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import store from './store/store';
@@ -8,6 +7,7 @@ import ContactPage from './pages/ContactPage';
 import ChartMap from './pages/ChartMaps';
 import './App.css';
 import SideBar from './components/Sidebar/SideBar';
+
 const currentState = store.getState();
 
 const queryClient = new QueryClient();
@@ -21,10 +21,10 @@ const App: React.FC = () => {
           <div className='bg-custom-color h-full'>
             <SideBar/>
             <Routes>
-              <Route path="/contactPage" element={<ContactPage />} />
-              
-              <Route path="/ChartMaps" element={<ChartMap />} />
-              </Routes>
+              <Route path="/" element={<Navigate to="/contact-page" />} />
+              <Route path="/contact-page" element={<ContactPage />} />
+              <Route path="/chart-maps" element={<ChartMap />} />
+            </Routes>
           </div>
         </Router>
       </QueryClientProvider>

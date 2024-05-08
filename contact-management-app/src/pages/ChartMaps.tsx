@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar/SideBar';
 import Chart from '../components/CasesChart/CasesCharts';
 import Map from '../components/CasesMap/CasesMap';
 
-const MainLayout = () => {
+const Dashboard = () => {
   return (
     <div className=" bg-custom-color flex flex-col h-screen ">
       <Sidebar /> 
@@ -19,4 +19,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default Dashboard;

@@ -19,20 +19,20 @@ const SideBar: React.FC = () => {
     <>
       <aside className={`fixed h-custom-height mt-3 ml-3 lg:w-64 bg-white text-black rounded-lg shadow-lg mb-8 transition-all duration-300 ${isOpen ? 'lg:block' : 'hidden lg:inline-block'}`} style={{ zIndex: 999 }}>
         <div className="p-4">
-          <h2 className="text-4xl font-myfont font-bold text-center my-4 text-black-500"><span className='text-orange-800 font-myfont'>Dash</span>Board</h2>
+          <h2 className="text-4xl font-myfont font-bold text-center mt-8 mb-4 text-custom-black"><span className='text-custom-blue font-myfont'>Dash</span>Board</h2>
         </div>
         <nav className="flex-1">
           <ul className="space-y-4">
-            <Link to="/contactPage" className="block" onClick={closeMenu}>
-              <li className='flex flex-row items-center px-8 py-2 hover:bg-custom-color-hover'>
+            <Link to="/contact-page" className="block" onClick={closeMenu}>
+              <li className='flex flex-row items-center px-8 py-2 hover:bg-custom-light-blue'>
                 <img src={contactIcon} alt='contact-icon' className='w-10 mr-2' />
-                Contacts
+                <h4 >Contacts</h4>
               </li>
             </Link>
-            <Link to="/ChartMaps" className="block" onClick={closeMenu}>
-              <li className='flex flex-row items-center px-8 py-2 hover:bg-custom-color-hover'>
+            <Link to="/chart-maps" className="block" onClick={closeMenu}>
+              <li className='flex flex-row items-center px-8 py-2 hover:bg-custom-light-blue'>
                 <img src={locationIcon} alt='Map-icon' className='w-10 mr-2'></img>
-                Maps and Charts
+                <h4 >Maps & Charts</h4>
               </li>
             </Link>
           </ul>

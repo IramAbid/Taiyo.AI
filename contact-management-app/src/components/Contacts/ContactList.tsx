@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteContact, Contact } from '../../store/types/type';
+import userView from './assets/user-view.png';
+import userHide from './assets/user-hide-dark.png';
+import userEdit from './assets/user-edit.png';
+import userDelete from './assets/user-delete.png';
 
 interface ContactListProps {
   contacts: Contact[];
@@ -21,41 +25,43 @@ const ContactList: React.FC<ContactListProps> = ({ contacts, onContactDeleted, o
   return (
     <div>
       {contacts.map((contact) => (
-        <div key={contact.id} className="border p-4 mb-4 flex items-center justify-between">
-          <div>
+        <div key={contact.id} className="border p-4 mb-4 w-auto flex items-center justify-between rounded-lg shadow-lg bg-white">
+          <div >
             <p onClick={() => handleViewContact(contact.id)}>
             {selectedContactId === contact.id ? (
                 <>
-                  <span>First Name: {contact.firstName} <br/></span>
-                  <span>Last Name: {contact.lastName} <br/></span>
-                  <span>Status: {contact.status}</span>
+                  <span className='ml-10 px-8 font-semibold text-custom-dark-gray2'>First Name : <span className='text-blue-500 ml-2'>{contact.firstName} <br/></span></span>
+                  <span className='ml-10 px-8 font-semibold text-custom-dark-gray2'>Last Name : <span className='text-blue-500 ml-2'>{contact.lastName} <br/></span></span>
+                  <span className='ml-10  px-8 font-semibold text-custom-dark-gray2'>Status <span className='ml-8'>:</span> <span className= {contact.status === 'Active' ? 'text-green-500 ml-2' : 'text-red-500 ml-2'} >{contact.status}</span></span>
                 </>
               ) : (
                 <>
-                  <span>{contact.firstName} {contact.lastName}</span>
+                  <span className='ml-10 px-8 font-semibold text-custom-dark-gray2'>{contact.firstName} {contact.lastName}</span>
                 </>
               )}
             </p>
           </div>
           <div>
+          
             <button
-              onClick={() => handleDeleteContact(contact.id)}
-              className="bg-red-500 text-white py-2 px-4 rounded-md mr-2"
+              onClick={() => onContactEdit(contact)} 
+              className="py-2 px-4 rounded-md mr-2"
             >
-              Delete
-            </button>
-            <button
-              onClick={() => onContactEdit(contact)} // Trigger edit directly here
-              className="bg-blue-500 text-white py-2 px-4 rounded-md mr-2"
-            >
-              Edit
+              <img src={userEdit} width={40} alt='edit-icon' title='Edit Contact'/> 
             </button>
             <button
               onClick={() => handleViewContact(contact.id)}
-              className="bg-green-500 text-white py-2 px-4 rounded-md"
+              className=" py-2 px-4 rounded-md mr-2"
             >
-              {selectedContactId === contact.id ? 'Hide' : 'View'}
+              {selectedContactId === contact.id ? <img src={userHide} alt='hide-icon' title='Hide Details' width={40}/> : <img src={userView} alt='view-icon' title='View Details' width={40}/>}
             </button>
+            <button
+              onClick={() => handleDeleteContact(contact.id)}
+              className=" py-2 px-4 rounded-md mr-10"
+            >
+              <img src={userDelete} width={40} alt='delete-icon' title='Delete Contact'/>
+            </button>
+            
           </div>
         </div>
       ))}

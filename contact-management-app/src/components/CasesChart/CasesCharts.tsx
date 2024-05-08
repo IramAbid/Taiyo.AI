@@ -28,9 +28,9 @@ const Charts = () => {
 
   // Render chart
   return (
-    <div className="w-full sm:w-5/6 mt-8 mb-4 p-4 ml-auto sm:pr-20 sm:pl-20 pb:10 sm:pb-20">
-       <h1 className='text-3xl sm:text-4xl font-semibold mb-2 sm:mb-8 text-center text-orange-800'>COVID-19 ACTIVE CASES REPORT</h1>
-      <h1 className='text-xl sm:text-3xl font-semibold mb-2 sm:mb-8 text-center'>COVID-19 Cases Fluctuations Over Time</h1>
+    <div className="w-full sm:w-5/6 mt-8 mb-4 p-4 pr-0 pl-0 sm:pr-20 sm:pl-20 pb:10 sm:pb-20 mx-auto px-auto sm:mr-2">
+       <h1 className='text-3xl sm:text-4xl font-semibold mb-2 sm:mb-8 text-center text-custom-black2'>CORONA VIRUS ACTIVE CASES REPORT</h1>
+      <h1 className='text-xl sm:text-3xl font-semibold mb-2 sm:mb-8 text-center text-custom-blue'>Covid Cases Fluctuations Over Time</h1>
       {isLoading && <div>Loading...</div>}
      
       {chartData && (
@@ -49,7 +49,7 @@ const Charts = () => {
               title: 'Number of Cases',
             },
             series: {
-              0: { color: '#FF86F3' }, 
+              0: { color: 'blue' }, 
               1: { color: 'red' },  //
               2: { color: 'green' },
             },
